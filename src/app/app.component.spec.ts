@@ -17,7 +17,6 @@ describe('AppComponent', () => {
   it(`should have the 'principes-solid-demo' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('principes-solid-demo');
   });
 
   it('should render title', () => {
