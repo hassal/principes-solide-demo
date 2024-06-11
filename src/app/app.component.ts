@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   template: `
   <div class="signup-container">
   <h2>Inscription</h2>
-  <form>
+  <form> 
     <div class="form-group">
       <label for="nom">Nom</label>
       <input type="text" id="nom" name="nom" ngModel required>
@@ -23,7 +23,7 @@ import { Component } from '@angular/core';
       <label for="motDePasse">Mot de passe</label>
       <input type="password" id="motDePasse" name="motDePasse" ngModel required>
     </div>
-    <button (click)="creerCompteUtilisateur">S'inscrire</button>
+    <button (click)="creerCompteUtilisateur($event)">S'inscrire</button>
   </form>
 </div>
 
@@ -78,7 +78,8 @@ styles: [
 })
 export class AppComponent {
   
-  creerCompteUtilisateur(){
+  creerCompteUtilisateur(event: Event){
+    event.preventDefault();
     console.log('Enregistrement dans la BD');
     console.log('Envoie de l email et message de notification');
   }
