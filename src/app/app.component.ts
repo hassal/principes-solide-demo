@@ -76,6 +76,7 @@ styles: [
   `
 ]
 })
+
 export class AppComponent {
   
   creerCompteUtilisateur(event: Event){
