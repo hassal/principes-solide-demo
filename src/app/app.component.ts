@@ -81,8 +81,8 @@ export class AppComponent {
   
   creerCompteUtilisateur(event: Event){
     event.preventDefault();
-    console.log('Enregistrement dans la BD');
-    console.log('Envoie de l email et message de notification');
+    console.log("Logique d'enregistrement");
+    console.log("Envoie de l email et message de notification");
   }
 
 }
