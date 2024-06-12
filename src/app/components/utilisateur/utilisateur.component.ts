@@ -6,24 +6,24 @@ import { EnregistrementService } from '../../services/enregistrement.service';
 @Component({
   selector: 'app-utilisateur',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule,FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './utilisateur.component.html',
   styleUrl: './utilisateur.component.css',
-  providers:[EnregistrementService]
+  providers: [EnregistrementService]
 })
-export class UtilisateurComponent implements OnInit{
+export class UtilisateurComponent implements OnInit {
   @Input()
   typeComposant: 'inscription' | 'questions' = 'inscription';
   title: string;
-  securityQuestionsForm: FormGroup; 
+  securityQuestionsForm: FormGroup;
   questions = [
     'Quel était le nom de votre premier animal de compagnie ?',
     'Quel est le nom de jeune fille de votre mère ?',
     'Quel était le nom de votre école primaire ?',
     'Quel était votre plat préféré quand vous étiez enfant ?'
-  ];  
+  ];
 
-  constructor(private fb: FormBuilder,private enregistrementService: EnregistrementService) { }
+  constructor(private fb: FormBuilder, private enregistrementService: EnregistrementService) { }
 
   ngOnInit(): void {
     this.securityQuestionsForm = this.fb.group({
@@ -43,9 +43,8 @@ export class UtilisateurComponent implements OnInit{
     }
   }
 
-  creerCompteUtilisateur(event: Event) 
-  {
-    event.preventDefault(); 
+  creerCompteUtilisateur(event: Event) {
+    event.preventDefault();
     this.enregistrementService.enregistrerUtilisateur();
   }
 
