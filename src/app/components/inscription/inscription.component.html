@@ -1,22 +1,20 @@
-<div class="signup-container">
-     <h2>Inscription</h2>
-     <form> 
-       <div class="form-group">
-         <label for="nom">Nom</label>
-         <input type="text" id="nom" name="nom" ngModel required>
-       </div>
-       <div class="form-group">
-         <label for="prenom">Prénom</label>
-         <input type="text" id="prenom" name="prenom" ngModel required>
-       </div>
-       <div class="form-group">
-         <label for="email">Email</label>
-         <input type="email" id="email" name="email" ngModel required>
-       </div>
-       <div class="form-group">
-         <label for="motDePasse">Mot de passe</label>
-         <input type="password" id="motDePasse" name="motDePasse" ngModel required>
-       </div>
-       <button (click)="creerCompteUtilisateur($event)">S'inscrire</button>
-     </form>
-</div>
+<h2>Inscription</h2>
+<form>
+  <div class="form-group">
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" name="nom" ngModel required>
+  </div>
+  <div class="form-group">
+    <label for="prenom">Prénom</label>
+    <input type="text" id="prenom" name="prenom" ngModel required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" ngModel required>
+  </div>
+  <div class="form-group">
+    <label for="motDePasse">Mot de passe</label>
+    <input type="password" id="motDePasse" name="motDePasse" ngModel required>
+  </div>
+  <button (click)="creerCompteUtilisateur($event)">S'inscrire</button>
+</form>
