@@ -1,3 +1,70 @@
 <div class="form-container">
-     <ng-content></ng-content>
+
+     <ng-container *ngIf="typeComposant === 'inscription'">
+          <h2>Inscription</h2>
+          <form>
+               <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" ngModel required>
+               </div>
+               <div class="form-group">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" ngModel required>
+               </div>
+               <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" ngModel required>
+               </div>
+               <div class="form-group">
+                    <label for="motDePasse">Mot de passe</label>
+                    <input type="password" id="motDePasse" name="motDePasse" ngModel required>
+               </div>
+               <button (click)="creerCompteUtilisateur($event)">S'inscrire</button>
+          </form>
+     </ng-container>
+
+     <ng-container *ngIf="typeComposant === 'questions'">
+          <form [formGroup]="securityQuestionsForm" (ngSubmit)="onSubmit()">
+               <div class="form-group">
+                    <label for="question1">Question de sécurité 1 :</label>
+                    <select id="question1" formControlName="question1" class="form-control">
+                         <option value="">Sélectionnez une question</option>
+                         <option *ngFor="let question of questions" [value]="question">{{ question }}</option>
+                    </select>
+                    <div *ngIf="securityQuestionsForm.get('question1')?.invalid && (securityQuestionsForm.get('question1')?.dirty || securityQuestionsForm.get('question1')?.touched)"
+                         class="error">
+                         <small>La question est requise</small>
+                    </div>
+               </div>     
+               <div class="form-group">
+                    <label for="answer1">Réponse :</label>
+                    <input id="answer1" type="text" formControlName="answer1" class="form-control">
+                    <div *ngIf="securityQuestionsForm.get('answer1')?.invalid && (securityQuestionsForm.get('answer1')?.dirty || securityQuestionsForm.get('answer1')?.touched)"
+                         class="error">
+                         <small>La réponse est requise</small>
+                    </div>
+               </div>
+               <div class="form-group">
+                    <label for="question2">Question de sécurité 2 :</label>
+                    <select id="question2" formControlName="question2" class="form-control">
+                         <option value="">Sélectionnez une question</option>
+                         <option *ngFor="let question of questions" [value]="question">{{ question }}</option>
+                    </select>
+                    <div *ngIf="securityQuestionsForm.get('question2')?.invalid && (securityQuestionsForm.get('question2')?.dirty || securityQuestionsForm.get('question2')?.touched)"
+                         class="error">
+                         <small>La question est requise</small>
+                    </div>
+               </div>
+               <div class="form-group">
+                    <label for="answer2">Réponse :</label>
+                    <input id="answer2" type="text" formControlName="answer2" class="form-control">
+                    <div *ngIf="securityQuestionsForm.get('answer2')?.invalid && (securityQuestionsForm.get('answer2')?.dirty || securityQuestionsForm.get('answer2')?.touched)"
+                         class="error">
+                         <small>La réponse est requise</small>
+                    </div>
+               </div>
+               <button type="submit" [disabled]="securityQuestionsForm.invalid" class="btn btn-primary">Soumettre</button>
+          </form>
+     </ng-container>
+
 </div>
