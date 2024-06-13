@@ -9,7 +9,7 @@ export class UtilisateurBase {
        this.titre = titre; 
      }
 
-     enregistrer(event: Event) 
+     enregistrer(event: Event) : void
      {
        event.preventDefault(); 
        this.enregistrementService.enregistrer();

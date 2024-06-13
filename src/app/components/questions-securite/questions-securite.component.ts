@@ -36,11 +36,7 @@ export class QuestionsSecuriteComponent extends UtilisateurBase implements OnIni
   }
 
    override enregistrer(event: Event) {
-    if (this.securityQuestionsForm.valid) {
-      console.log('Formulaire soumis', this.securityQuestionsForm.value);
-      super.enregistrer(event);
-    } else {
-      console.log('Le formulaire n\'est pas valide');
+       throw Error('Non supporté');
     }
+
   }
-}
