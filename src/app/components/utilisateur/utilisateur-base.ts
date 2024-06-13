@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import { EnregistrementService } from '../../services/enregistrement.service';
 
 export class UtilisateurBase {

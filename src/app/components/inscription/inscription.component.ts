@@ -20,5 +20,4 @@ export class InscriptionComponent extends UtilisateurBase {
     super(enregistrementService, titre);
   }
 
-
 }
