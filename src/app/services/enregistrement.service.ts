@@ -9,7 +9,7 @@ export class EnregistrementService {
 
   constructor(private notificationService: NotificationService) { }
 
-  enregistrerUtilisateur()
+  enregistrer()
   {
     console.log('Logique enregistrement');
     /*

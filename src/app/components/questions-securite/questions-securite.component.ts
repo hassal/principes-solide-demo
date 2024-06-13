@@ -1,25 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { EnregistrementService } from '../../services/enregistrement.service';
+import { UtilisateurBase } from '../utilisateur/utilisateur-base';
 
 @Component({
   selector: 'app-questions-securite',
-  standalone:true,
-  imports:[CommonModule,ReactiveFormsModule],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './questions-securite.component.html',
   styleUrls: ['./questions-securite.component.css']
 })
-export class QuestionsSecuriteComponent implements OnInit {
-  title: string;
+export class QuestionsSecuriteComponent extends UtilisateurBase implements OnInit {
+
   securityQuestionsForm: FormGroup;
   questions = [
     'Quel était le nom de votre premier animal de compagnie ?',
     'Quel est le nom de jeune fille de votre mère ?',
     'Quel était le nom de votre école primaire ?',
     'Quel était votre plat préféré quand vous étiez enfant ?'
-  ];  
+  ];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, enregistrementService: EnregistrementService) {
+    const titre = 'Questions de sécurité';
+    super(enregistrementService, titre);
+  }
 
   ngOnInit(): void {
     this.securityQuestionsForm = this.fb.group({
@@ -30,9 +35,10 @@ export class QuestionsSecuriteComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+   override enregistrer(event: Event) {
     if (this.securityQuestionsForm.valid) {
       console.log('Formulaire soumis', this.securityQuestionsForm.value);
+      super.enregistrer(event);
     } else {
       console.log('Le formulaire n\'est pas valide');
     }

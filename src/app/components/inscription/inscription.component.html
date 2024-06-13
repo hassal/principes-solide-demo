@@ -1,4 +1,4 @@
-<h2>Inscription</h2>
+<h2>{{ titre }}</h2>
 <form>
   <div class="form-group">
     <label for="nom">Nom</label>
@@ -16,5 +16,5 @@
     <label for="motDePasse">Mot de passe</label>
     <input type="password" id="motDePasse" name="motDePasse" ngModel required>
   </div>
-  <button (click)="creerCompteUtilisateur($event)">S'inscrire</button>
+  <button (click)="enregistrer($event)">S'inscrire</button>
 </form>

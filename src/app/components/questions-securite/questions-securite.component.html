@@ -1,4 +1,5 @@
-<form [formGroup]="securityQuestionsForm" (ngSubmit)="onSubmit()">
+<h2>{{ titre }}</h2>
+<form [formGroup]="securityQuestionsForm" (ngSubmit)="enregistrer($event)">
      <div class="form-group">
           <label for="question1">Question de sécurité 1 :</label>
           <select id="question1" formControlName="question1" class="form-control">

@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { EnregistrementService } from '../../services/enregistrement.service';
+import { UtilisateurBase } from '../utilisateur/utilisateur-base';
 
 @Component({
   selector: 'app-inscription',
@@ -9,13 +12,14 @@ import { EnregistrementService } from '../../services/enregistrement.service';
   styleUrl: './inscription.component.css'
 })
 
-export class InscriptionComponent {
+export class InscriptionComponent extends UtilisateurBase {
 
-  constructor(private enregistrementService: EnregistrementService) { }
+  inscriptionForm: FormGroup;
 
-  creerCompteUtilisateur(event: Event) 
-  {
-    event.preventDefault(); 
-    this.enregistrementService.enregistrerUtilisateur();
+  constructor(enregistrementService: EnregistrementService) {
+    const titre = 'Inscription';
+    super(enregistrementService, titre);
   }
+
+
 }
