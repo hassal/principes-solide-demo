@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EnregistrementService } from '../../services/enregistrement.service';
 import { UtilisateurBase } from '../utilisateur/utilisateur-base';
+import { QuestionsSecutite } from '../utilisateur/questions-secutite';
 
 @Component({
   selector: 'app-questions-securite',
@@ -11,9 +12,9 @@ import { UtilisateurBase } from '../utilisateur/utilisateur-base';
   templateUrl: './questions-securite.component.html',
   styleUrls: ['./questions-securite.component.css']
 })
-export class QuestionsSecuriteComponent extends UtilisateurBase implements OnInit {
 
-  securityQuestionsForm: FormGroup;
+export class QuestionsSecuriteComponent extends UtilisateurBase implements QuestionsSecutite {
+
   questions = [
     'Quel était le nom de votre premier animal de compagnie ?',
     'Quel est le nom de jeune fille de votre mère ?',
@@ -26,27 +27,18 @@ export class QuestionsSecuriteComponent extends UtilisateurBase implements OnIni
     super(enregistrementService, titre);
   }
 
-  ngOnInit(): void {
-    this.securityQuestionsForm = this.fb.group({
-      question1: ['', Validators.required],
-      answer1: ['', Validators.required],
-      question2: ['', Validators.required],
-      answer2: ['', Validators.required]
-    });
-  }
-
    override enregistrer(event: Event) {
     if (this.verifierReponses()) {
-      console.log('Les réponses ont été soumises', this.securityQuestionsForm.value);
+      console.log('Les réponses ont été soumises', this.formulaire.value);
       super.enregistrer(event);
     } else {
       console.log('Les réponses ne sont pas valides');
     }
   }
 
-  override verifierReponses() {
+  verifierReponses() {
     console.log('Vérification des réponses ...');
-    return super.verifierReponses() && this.securityQuestionsForm.valid;
+    return this.formulaire.valid;
   }
 
 }

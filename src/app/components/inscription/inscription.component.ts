@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { EnregistrementService } from '../../services/enregistrement.service';
 import { UtilisateurBase } from '../utilisateur/utilisateur-base';
 
@@ -12,8 +11,6 @@ import { UtilisateurBase } from '../utilisateur/utilisateur-base';
 })
 
 export class InscriptionComponent extends UtilisateurBase {
-
-  inscriptionForm: FormGroup;
 
   constructor(enregistrementService: EnregistrementService) {
     const titre = 'Inscription';

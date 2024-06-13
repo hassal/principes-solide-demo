@@ -1,12 +1,12 @@
 <h2>{{ titre }}</h2>
-<form [formGroup]="securityQuestionsForm" (ngSubmit)="enregistrer($event)">
+<form [formGroup]="formulaire" (ngSubmit)="enregistrer($event)">
      <div class="form-group">
           <label for="question1">Question de sécurité 1 :</label>
           <select id="question1" formControlName="question1" class="form-control">
                <option value="">Sélectionnez une question</option>
                <option *ngFor="let question of questions" [value]="question">{{ question }}</option>
           </select>
-          <div *ngIf="securityQuestionsForm.get('question1')?.invalid && (securityQuestionsForm.get('question1')?.dirty || securityQuestionsForm.get('question1')?.touched)"
+          <div *ngIf="formulaire.get('question1')?.invalid && (formulaire.get('question1')?.dirty || formulaire.get('question1')?.touched)"
                class="error">
                <small>La question est requise</small>
           </div>
@@ -15,7 +15,7 @@
      <div class="form-group">
           <label for="answer1">Réponse :</label>
           <input id="answer1" type="text" formControlName="answer1" class="form-control">
-          <div *ngIf="securityQuestionsForm.get('answer1')?.invalid && (securityQuestionsForm.get('answer1')?.dirty || securityQuestionsForm.get('answer1')?.touched)"
+          <div *ngIf="formulaire.get('answer1')?.invalid && (formulaire.get('answer1')?.dirty || formulaire.get('answer1')?.touched)"
                class="error">
                <small>La réponse est requise</small>
           </div>
@@ -27,7 +27,7 @@
                <option value="">Sélectionnez une question</option>
                <option *ngFor="let question of questions" [value]="question">{{ question }}</option>
           </select>
-          <div *ngIf="securityQuestionsForm.get('question2')?.invalid && (securityQuestionsForm.get('question2')?.dirty || securityQuestionsForm.get('question2')?.touched)"
+          <div *ngIf="formulaire.get('question2')?.invalid && (formulaire.get('question2')?.dirty || formulaire.get('question2')?.touched)"
                class="error">
                <small>La question est requise</small>
           </div>
@@ -36,11 +36,11 @@
      <div class="form-group">
           <label for="answer2">Réponse :</label>
           <input id="answer2" type="text" formControlName="answer2" class="form-control">
-          <div *ngIf="securityQuestionsForm.get('answer2')?.invalid && (securityQuestionsForm.get('answer2')?.dirty || securityQuestionsForm.get('answer2')?.touched)"
+          <div *ngIf="formulaire.get('answer2')?.invalid && (formulaire.get('answer2')?.dirty || formulaire.get('answer2')?.touched)"
                class="error">
                <small>La réponse est requise</small>
           </div>
      </div>
 
-     <button type="submit" [disabled]="securityQuestionsForm.invalid" class="btn btn-primary">Soumettre</button>
+     <button type="submit" [disabled]="formulaire.invalid" class="btn btn-primary">Soumettre</button>
 </form>
