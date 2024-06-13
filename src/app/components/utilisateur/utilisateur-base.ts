@@ -1,6 +1,7 @@
 import { EnregistrementService } from '../../services/enregistrement.service';
+import { UtilisateurInterface } from './utilisateur-interface';
 
-export class UtilisateurBase {
+export class UtilisateurBase implements UtilisateurInterface {
 
      titre: string = '';  
 
@@ -9,9 +10,14 @@ export class UtilisateurBase {
        this.titre = titre; 
      }
 
-     enregistrer(event: Event) 
+     enregistrer(event: Event)
      {
        event.preventDefault(); 
        this.enregistrementService.enregistrer();
+     }
+
+     verifierReponses(): boolean
+     {
+        return true;
      }
 }

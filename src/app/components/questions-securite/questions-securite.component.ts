@@ -36,11 +36,17 @@ export class QuestionsSecuriteComponent extends UtilisateurBase implements OnIni
   }
 
    override enregistrer(event: Event) {
-    if (this.securityQuestionsForm.valid) {
-      console.log('Formulaire soumis', this.securityQuestionsForm.value);
+    if (this.verifierReponses()) {
+      console.log('Les réponses ont été soumises', this.securityQuestionsForm.value);
       super.enregistrer(event);
     } else {
-      console.log('Le formulaire n\'est pas valide');
+      console.log('Les réponses ne sont pas valides');
     }
   }
+
+  override verifierReponses() {
+    console.log('Vérification des réponses ...');
+    return super.verifierReponses() && this.securityQuestionsForm.valid;
+  }
+
 }
