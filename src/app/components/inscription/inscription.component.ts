@@ -13,20 +13,9 @@ import { QuestionsSecuriteComponent } from '../questions-securite/questions-secu
 
 export class InscriptionComponent extends UtilisateurBase {
 
-  @ContentChild(QuestionsSecuriteComponent)
-  content?: QuestionsSecuriteComponent;
-
   constructor(enregistrementService: EnregistrementService) {
     const titre = 'Inscription';
     super(enregistrementService, titre);
-  }
-
-  ngAfterContentInit(): void {
-
-    if(this.content){
-      this.content.verifierReponses();
-    }
-
   }
 
 }
