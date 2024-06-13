@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EnregistrementService } from '../../services/enregistrement.service';
 import { UtilisateurBase } from '../utilisateur/utilisateur-base';
@@ -11,9 +11,8 @@ import { UtilisateurBase } from '../utilisateur/utilisateur-base';
   templateUrl: './questions-securite.component.html',
   styleUrls: ['./questions-securite.component.css']
 })
-export class QuestionsSecuriteComponent extends UtilisateurBase implements OnInit {
+export class QuestionsSecuriteComponent extends UtilisateurBase {
 
-  securityQuestionsForm: FormGroup;
   questions = [
     'Quel était le nom de votre premier animal de compagnie ?',
     'Quel est le nom de jeune fille de votre mère ?',
@@ -27,7 +26,7 @@ export class QuestionsSecuriteComponent extends UtilisateurBase implements OnIni
   }
 
   ngOnInit(): void {
-    this.securityQuestionsForm = this.fb.group({
+    this.formulaire = this.fb.group({
       question1: ['', Validators.required],
       answer1: ['', Validators.required],
       question2: ['', Validators.required],
@@ -37,7 +36,7 @@ export class QuestionsSecuriteComponent extends UtilisateurBase implements OnIni
 
    override enregistrer(event: Event) {
     if (this.verifierReponses()) {
-      console.log('Les réponses ont été soumises', this.securityQuestionsForm.value);
+      console.log('Les réponses ont été soumises', this.formulaire.value);
       super.enregistrer(event);
     } else {
       console.log('Les réponses ne sont pas valides');
@@ -46,7 +45,7 @@ export class QuestionsSecuriteComponent extends UtilisateurBase implements OnIni
 
   override verifierReponses() {
     console.log('Vérification des réponses ...');
-    return super.verifierReponses() && this.securityQuestionsForm.valid;
+    return super.verifierReponses() && this.formulaire.valid;
   }
 
 }
