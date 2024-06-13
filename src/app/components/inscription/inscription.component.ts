@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { EnregistrementService } from '../../services/enregistrement.service';
 import { UtilisateurBase } from '../utilisateur/utilisateur-base';
 
