@@ -1,11 +1,9 @@
-import { FormGroup } from '@angular/forms';
 import { EnregistrementService } from '../../services/enregistrement.service';
 import { UtilisateurInterface } from './utilisateur-interface';
 
 export class UtilisateurBase implements UtilisateurInterface {
 
-     titre: string = '';  
-     formulaire: FormGroup;
+     titre: string = '';
      
      constructor(private enregistrementService: EnregistrementService, titre: string) 
      {

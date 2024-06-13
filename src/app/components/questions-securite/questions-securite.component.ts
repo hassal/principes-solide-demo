@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EnregistrementService } from '../../services/enregistrement.service';
 import { UtilisateurBase } from '../utilisateur/utilisateur-base';
-import { QuestionsSecutite } from '../utilisateur/questions-secutite';
+import { QuestionsSecutite } from '../utilisateur/questions-secutite-interface';
 
 @Component({
-  selector: 'app-questions-securite',
+  selector: 'app-questions-securite', 
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './questions-securite.component.html',
   styleUrls: ['./questions-securite.component.css']
 })
 
-export class QuestionsSecuriteComponent extends UtilisateurBase implements QuestionsSecutite {
+export class QuestionsSecuriteComponent extends UtilisateurBase implements OnInit, QuestionsSecutite {
+
+  formulaire: FormGroup;
 
   questions = [
     'Quel était le nom de votre premier animal de compagnie ?',
@@ -27,7 +29,16 @@ export class QuestionsSecuriteComponent extends UtilisateurBase implements Quest
     super(enregistrementService, titre);
   }
 
-   override enregistrer(event: Event) {
+  ngOnInit(): void {
+    this.formulaire = this.fb.group({
+      question1: ['', Validators.required],
+      answer1: ['', Validators.required],
+      question2: ['', Validators.required],
+      answer2: ['', Validators.required]
+    });
+  }
+
+  override enregistrer(event: Event) {
     if (this.verifierReponses()) {
       console.log('Les réponses ont été soumises', this.formulaire.value);
       super.enregistrer(event);
