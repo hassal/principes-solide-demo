@@ -9,7 +9,7 @@ export class UtilisateurBase implements UtilisateurInterface {
      {
        this.titre = titre; 
      }
-
+ 
      enregistrer(event: Event)
      {
        event.preventDefault(); 
