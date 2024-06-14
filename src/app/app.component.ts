@@ -36,7 +36,6 @@ styles: [
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
   }
   
   .signup-container h2 {
@@ -81,8 +80,12 @@ export class AppComponent {
   
   creerCompteUtilisateur(event: Event){
     event.preventDefault();
-    console.log("Logique d'enregistrement");
-    console.log("Envoie de l email et message de notification");
+    console.log("Logique d'enregistrement...");
+    this.envoyerNotification();
+  }
+
+  envoyerNotification(){
+    console.log("Envoie de l email et message de notification...");
   }
 
 }
